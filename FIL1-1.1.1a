@@ -1,0 +1,30 @@
+<script>
+    function toggleSearch() {
+        var searchInput = document.getElementById('search-input');
+        if (searchInput.style.display === 'none') {
+            searchInput.style.display = 'block';
+            searchInput.focus();
+        } else {
+            searchInput.style.display = 'none';
+        }
+    }
+</script>
+
+<!-- Search toggle button with ARIA label -->
+<button onclick="toggleSearch()" aria-label="Toggle search" aria-expanded="false">Search</button>
+
+<!-- Search input field -->
+<input type="text" id="search-input" style="display: none;" aria-label="Search input">
+
+<script>
+    function activateSearchField() {
+        // Assuming 'toggleButton' is the ID of the search toggle button
+        var toggleButton = document.getElementById('toggleButton');
+        // Assuming 'searchInput' is the ID of the search input field
+        var searchInput = document.getElementById('searchInput');
+        toggleButton.addEventListener('focus', function() {
+            // Set focus on the search input field
+            searchInput.focus();
+        });
+    }
+</script>
