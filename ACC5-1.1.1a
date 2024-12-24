@@ -1,0 +1,91 @@
+<!html lang="en"> 
+
+<head> 
+
+    <meta charset="UTF-8"> 
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+    <title>Search Result with Metadata</title> 
+
+    <style> 
+
+        .metadata { 
+
+            display: none; 
+
+        } 
+
+  
+
+        .metadata[aria-expanded="true"] { 
+
+            display: block; 
+
+        } 
+
+    </style> 
+
+</head> 
+
+<body> 
+
+    <div class="search-result"> 
+
+        <h2>Item Title</h2> 
+
+        <p>Brief description of the item...</p> 
+
+        <button id="moreButton" aria-expanded="false" aria-controls="metadata1" tabindex="0"> 
+
+    More about item 
+
+</button> 
+
+<div id="metadata1" class="metadata" tabindex="-1" aria-expanded="false"> 
+
+    <p>Author: Jane Doe</p> 
+
+    <p>Published: 2023</p> 
+
+    <p>Category: Science Fiction</p> 
+
+    <!-- More about item --> 
+
+</div> 
+
+<script> 
+
+    const moreButton = document.getElementById('moreButton'); 
+
+    const metadata = document.getElementById('metadata1'); 
+
+  
+
+    moreButton.addEventListener('click', () => { 
+
+        const isExpanded = moreButton.getAttribute('aria-expanded') === 'true'; 
+
+        moreButton.setAttribute('aria-expanded', !isExpanded); 
+
+        metadata.setAttribute('aria-expanded', !isExpanded); 
+
+  
+
+        if (!isExpanded) { 
+
+            metadata.focus(); // Move focus to the metadata section after expanding it 
+
+        } 
+
+    }); 
+
+</script> 
+
+ 
+
+    </div> 
+
+</body> 
+
+</Html> 
