@@ -12,7 +12,6 @@ if (query.length > 0) {
     const suggestions = response.suggestions; 
 
   
-
     suggestions.forEach((suggestion, index) => { 
 
         const listItem = document.createElement('li'); 
