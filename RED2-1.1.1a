@@ -1,0 +1,31 @@
+<div class="collection"> 
+
+    <h2 id="collection-title">Collection Title</h2> 
+
+    <ul> 
+
+        <li> 
+
+            <a href="#" aria-labelledby="collection-title thumb1"> 
+
+                <img src="thumbnail1.jpg" alt="Thumbnail Description for Item" id="thumb1"> 
+
+            </a> 
+
+        </li> 
+
+        <li> 
+
+            <a href="#" aria-labelledby="collection-title thumb2"> 
+
+                <img src="thumbnail2.jpg" alt="Thumbnail Description for Item 2" id="thumb2"> 
+
+            </a> 
+
+        </li> 
+
+        <!-- More items here --> 
+
+    </ul> 
+
+</div> 
