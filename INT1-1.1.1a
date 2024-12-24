@@ -1,0 +1,15 @@
+<header role="banner">
+  <h1>Accessible Webpage</h1>
+</header>
+
+<main role="main">
+  <h2>Welcome to Our Website</h2>
+  <p>This is the main content of the webpage.</p>
+  <button onclick="openModal()">Open Modal</button>
+</main>
+
+<div id="modal" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDescription">
+  <h2 id="modalTitle">Modal Dialog</h2>
+  <p id="modalDescription">This is a modal dialog with additional information or options.</p>
+  <button onclick="closeModal()">Close Modal</button>
+</div>
