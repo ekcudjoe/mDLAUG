@@ -1,0 +1,23 @@
+<form role="search" id="searchForm">
+    <div style="position: relative;">
+        <input type="search" id="search" name="q" aria-label="Search query" oninput="toggleClearButton()">
+        <span class="clear-button" aria-label="Clear search" onclick="clearSearch()"></span>
+    </div>
+    <button type="submit" aria-label="Submit search">Search</button>
+</form>
+
+<script>
+    // Function to toggle the visibility of the clear button
+    function toggleClearButton() {
+        const searchInput = document.getElementById('search');
+        const clearButton = document.querySelector('.clear-button');
+        clearButton.style.visibility = searchInput.value.length > 0 ? 'visible' : 'hidden';
+    }
+
+    // Function to clear the search input
+    function clearSearch() {
+        const searchInput = document.getElementById('search');
+        searchInput.value = ''; // Clears the input field
+        toggleClearButton();    // Hide the clear button after clearing
+    }
+</script>
