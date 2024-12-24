@@ -1,1 +1,146 @@
+// Clear previous suggestions 
 
+suggestionsContainer.innerHTML = ''; 
+
+  
+if (query.length > 0) { 
+
+    // Get suggestions (mocked API used here with a static array) 
+
+    const response = await fetchSuggestions(query); 
+
+    const suggestions = response.suggestions; 
+
+  
+
+    suggestions.forEach((suggestion, index) => { 
+
+        const listItem = document.createElement('li'); 
+
+        listItem.textContent = suggestion; 
+
+        listItem.tabIndex = -1; // Make list items focusable 
+
+        listItem.setAttribute('role', 'option'); 
+
+        listItem.setAttribute('aria-selected', 'false'); 
+
+  
+
+        listItem.addEventListener('click', () => { 
+
+            document.getElementById('query').value = suggestion; 
+
+            suggestionsContainer.innerHTML = ''; 
+
+        }); 
+
+  
+
+        listItem.addEventListener('keydown', (event) => { 
+
+            if (event.key === 'Enter') { 
+
+                document.getElementById('query').value = suggestion; 
+
+                suggestionsContainer.innerHTML = ''; 
+
+            } 
+
+        }); 
+
+  
+
+        suggestionsContainer.appendChild(listItem); 
+
+  
+
+        // Announce the suggestion via TTS 
+
+        readSuggestion(suggestion); 
+
+    }); 
+
+  
+
+    suggestionsBox.setAttribute('aria-expanded', 'true'); 
+
+} else { 
+
+    suggestionsBox.setAttribute('aria-expanded', 'false'); 
+
+} 
+
+  
+
+// Mocked API response 
+
+async function fetchSuggestions(query) { 
+
+    return { 
+
+        suggestions: ['apple', 'banana', 'cherry', 'date', 'elderberry', 
+
+                      'world war two', 'world war III', 'independence of declaration'] 
+
+            .filter(item => item.includes(query)) 
+
+    }; 
+
+} 
+
+  
+
+function readSuggestion(suggestion) { 
+
+    // Use TTS to read out the suggested item 
+
+    const utterance = new SpeechSynthesisUtterance(suggestion); 
+
+    speechSynthesis.speak(utterance); 
+
+} 
+
+  
+
+document.getElementById('query').addEventListener('keydown', (event) => { 
+
+    const suggestions = Array.from(document.querySelectorAll('suggestions li')); 
+
+    let currentIndex = suggestions.findIndex(item =>  
+
+        item.getAttribute('aria-selected') === 'true'); 
+
+  
+
+    if (event.key === 'ArrowDown') { 
+
+        currentIndex = (currentIndex + 1) % suggestions.length; 
+
+    } else if (event.key === 'ArrowUp') { 
+
+        currentIndex = (currentIndex - 1 + suggestions.length) % suggestions.length; 
+
+    } else if (event.key === 'Escape') { 
+
+        suggestionsContainer.innerHTML = ''; 
+
+        return; 
+
+    } 
+
+  
+
+    suggestions.forEach((item, index) => { 
+
+        item.setAttribute('aria-selected', index === currentIndex ? 'true' : 'false'); 
+
+        if (index === currentIndex) { 
+
+            item.focus(); 
+
+        } 
+
+    }); 
+
+}); 
