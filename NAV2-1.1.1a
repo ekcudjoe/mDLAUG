@@ -1,0 +1,19 @@
+<nav aria-label="Pagination">
+  <ul role="list" aria-labelledby="pagination-heading">
+    <li role="listitem" aria-current="page" aria-posinset="1" aria-setsize="5">
+      <a href="#page1">1</a>
+    </li>
+    <li role="listitem" aria-posinset="2" aria-setsize="5">
+      <a href="#page2">2</a>
+    </li>
+    <li role="listitem" aria-posinset="3" aria-setsize="5">
+      <a href="#page3">3</a>
+    </li>
+    <li role="listitem" aria-posinset="4" aria-setsize="5">
+      <a href="#page4">4</a>
+    </li>
+    <li role="listitem" aria-posinset="5" aria-setsize="5">
+      <a href="#page5">5</a>
+    </li>
+  </ul>
+</nav>
