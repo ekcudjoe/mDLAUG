@@ -1,0 +1,75 @@
+<!-- Search Results --> 
+
+<div id="search-results"> 
+
+<!-- Dynamically filled with search results --> 
+
+</div> 
+
+  
+
+<!-- ARIA Live Region for Status Updates --> 
+
+<div id="search-status" aria-live="assertive" aria-atomic="true" style="position: 
+
+absolute; left: -9999px;"></div> 
+
+  
+
+<script> 
+
+async function performSearch(event) { 
+
+    event.preventDefault(); 
+
+    const searchStatus = document.getElementById('search-status'); 
+
+    const searchResults = document.getElementById('search-results'); 
+
+    const query = document.getElementById('search-input').value; 
+
+  
+
+    // Notify user that the search is in progress 
+
+    searchStatus.textContent = 'Searching...'; 
+
+  
+
+    try { 
+
+        // Simulate an API call to fetch search results (replace with actual API call) 
+
+        const response = await fetch(`https://api.example.com/search?q=${query}`); 
+
+        const data = await response.json(); 
+
+  
+
+        // Assuming data.results is an array of search results 
+
+        const numberOfResults = data.results.length; 
+
+  
+
+        // Display search results 
+
+        searchResults.innerHTML = data.results.map(result => `<p>${result.title}</p>`).join(''); 
+
+  
+
+        // Update ARIA live region with the number of results 
+
+        searchStatus.textContent = `Search complete. ${numberOfResults} results found.`; 
+
+    } catch (error) { 
+
+        // Handle errors and notify user 
+
+        searchStatus.textContent = 'An error occurred while searching. Please try again.'; 
+
+    } 
+
+} 
+
+</script> 
