@@ -1,0 +1,73 @@
+<!-- Placeholder for the clickable link --> 
+
+<a href="#" id="pdfLink">Click here to view PDF</a> 
+
+  
+
+<!-- Container for displaying PDF content --> 
+
+<div id="pdfContainer" style="display: none;"></div> 
+
+  
+
+<script> 
+
+  document.addEventListener("DOMContentLoaded", function () { 
+
+    // Get reference to the clickable link and the container for PDF content 
+
+    var pdfLink = document.getElementById("pdfLink"); 
+
+    var pdfContainer = document.getElementById("pdfContainer"); 
+
+  
+
+    // Add click event listener to the link 
+
+    pdfLink.addEventListener("click", function (event) { 
+
+      event.preventDefault(); // Prevent default link behavior (e.g., following the link) 
+
+  
+
+      // Load PDF content into the container 
+
+      loadPDFIntoContainer("path/to/your/pdf/file.pdf", pdfContainer); 
+
+    }); 
+
+  }); 
+
+  
+
+  function loadPDFIntoContainer(pdfUrl, container) { 
+
+    // Create an iframe element 
+
+    var iframe = document.createElement("iframe"); 
+
+  
+
+    // Set iframe attributes 
+
+    iframe.src = pdfUrl; // Set the source of the iframe to the PDF URL 
+
+    iframe.width = "100%"; // Set width to 100% of container (adjust as needed) 
+
+    iframe.height = "500px"; // Set a fixed height for the iframe (adjust as needed) 
+
+    iframe.title = "Document viewer for PDF"; // Provide a meaningful title for accessibility 
+
+  
+
+    // Append the iframe to the container 
+
+    container.innerHTML = ""; // Clear any existing content in the container 
+
+    container.style.display = "block"; // Make the container visible 
+
+    container.appendChild(iframe); 
+
+  } 
+
+</script> 
